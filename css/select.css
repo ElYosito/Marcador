@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Work Sans", serif;
+    font-optical-sizing: auto;
+    background-color: #1E293B;
+    overflow-x: hidden;
+}
+
+i {
+    color: white;
+    font-size: 30px;
+}
+
+.card {
+    width: 100%;
+    max-width: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    height: 120px;
+    object-fit: cover;
+}
+
+.card-body {
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-borde {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.img-borde img {
+    width: 25vw;
+    /* Tamaño relativo */
+    height: auto;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .img-borde img {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .img-borde img {
+        width: 50vw;
+    }
+}

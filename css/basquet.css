@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Work Sans", serif;
+    font-optical-sizing: auto;
+    background-color: #1E293B;
+    overflow-x: hidden;
+}
+
+i {
+    color: white;
+    font-size: 30px;
+}
+
+.timer {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.btn {
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-start {
+    background-color: green;
+    color: white;
+}
+
+.btn-stop {
+    background-color: red;
+    color: white;
+}
+
+.btn-reset {
+    background-color: blue;
+    color: white;
+}

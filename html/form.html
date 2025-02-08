@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/Icono.png" type="image/x-icon">
+    <title>Agregar equipos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+
+<body>
+    <div class="m-2">
+        <div class="d-flex justify-content-between">
+            <a href="../index.html"><i class="fa-solid fa-house"></i></a>
+            <a href="select.html"><i class="fa-brands fa-dribbble"></i></a>
+        </div>
+
+        <div class="d-flex justify-content-center align-content-center">
+            <img src="../img/Icono.png" alt="">
+        </div>
+
+        <h1 class="text-center m-3 text-white">Agregar equipos</h1>
+
+        <div class="m-2">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombre" placeholder="Equipo Dinamita">
+                <label for="nombre">Nombre del equipo:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="capitan" placeholder="José">
+                <label for="capitan">Nombre del capitán:</label>
+            </div>
+            <div class="form-floating mb-5">
+                <select class="form-select" id="color" aria-label="Escoge un color para tu equipo">
+                    <option selected disabled>Escoge un color</option>
+                    <option value="Azul">Azul</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Naranja">Naranja</option>
+                    <option value="Verde">Verde</option>
+                </select>
+                <label for="color">Color del equipo</label>
+            </div>
+        </div>
+
+        <!-- Mensaje de alerta -->
+        <p id="mensaje" class="text-center fw-bold"></p>
+
+        <div class="d-flex justify-content-center align-content-center">
+            <button type="button" class="btn btn-success btn-lg" id="guardar">Guardar</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("guardar").addEventListener("click", function () {
+            let nombre = document.getElementById("nombre").value.trim();
+            let capitan = document.getElementById("capitan").value.trim();
+            let color = document.getElementById("color").value;
+            let mensaje = document.getElementById("mensaje");
+
+            if (nombre === "" || capitan === "" || color === "Escoge un color") {
+                mensaje.textContent = "⚠️ Por favor, completa todos los campos. ⚠️";
+                mensaje.classList.remove("text-success");
+                mensaje.classList.add("text-danger");
+                return;
+            }
+
+            let equipo = {
+                nombre: nombre,
+                capitan: capitan,
+                color: color
+            };
+
+            // Obtener equipos previos del localStorage
+            let equipos = JSON.parse(localStorage.getItem("equipos")) || [];
+
+            // Agregar nuevo equipo
+            equipos.push(equipo);
+
+            // Guardar en localStorage
+            localStorage.setItem("equipos", JSON.stringify(equipos));
+
+            // Mostrar mensaje de éxito
+            mensaje.textContent = "✅ Equipo guardado correctamente.";
+            mensaje.classList.remove("text-danger");
+            mensaje.classList.add("text-success");
+
+            // Limpiar formulario después de guardar
+            document.getElementById("nombre").value = "";
+            document.getElementById("capitan").value = "";
+            document.getElementById("color").value = "Escoge un color";
+
+            // Ocultar mensaje después de 3 segundos
+            setTimeout(() => {
+                mensaje.textContent = "";
+            }, 3000);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
